@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:world_time_app/services/world_time.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 
 class Loading extends StatefulWidget {
@@ -18,7 +19,7 @@ class _LoadingState extends State<Loading> {
 void setUpWorldTime() async
 {
 
-  WorldTime instance = WorldTime(location: 'Kolkata', flag:'india.png' , url: 'Asia/Kolkata');
+  WorldTime instance = WorldTime(location: 'PATIALA', flag:'india.png' , url: 'Asia/Kolkata', );
   await instance.getTime();
 
   //1. pushNamed is used to open one screen from another. It works like INTENT in Android
@@ -31,6 +32,7 @@ void setUpWorldTime() async
     'location': instance.location,
     'flag': instance.flag,
     'time': instance.time,
+    'isDayTime': instance.isDayTime,
   });
 
 
@@ -56,9 +58,12 @@ void setUpWorldTime() async
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Padding(
-        padding: EdgeInsets.all(50.0),
-        child: Text(time),
+      backgroundColor: Colors.blue[900],
+      body: Center(
+        child: SpinKitSquareCircle(
+          color: Colors.white,
+          size: 80.0,
+        ),
       ),
     );
   }
