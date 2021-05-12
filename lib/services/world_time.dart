@@ -44,7 +44,7 @@ class WorldTime {
       //print(now);
 
 //set the day time
-      isDayTime = now.hour> 6 && now.hour<14? true : false;
+      isDayTime = now.hour> 6 && now.hour<20? true : false;
       time = DateFormat.jm().format(now);
 
       print('isdaytime $isDayTime');
